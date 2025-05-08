@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/subscription_db?currentSchema=subscription_schema
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: subscription_schema
+        jdbc.lob.non_contextual_creation: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    liquibase-schema: subscription_schema
+    parameters:
+      liquibaseSchemaName: subscription_schema
+
+server:
+  port: 8080
+
